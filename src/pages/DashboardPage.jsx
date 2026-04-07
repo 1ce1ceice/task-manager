@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import {
   addDoc,
@@ -12,25 +12,27 @@ import {
   updateDoc,
   where,
 } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
+import FilterBar from '../components/FilterBar';
 import { auth, db } from '../lib/firebase';
 
 export default function DashboardPage() {
-  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
     let unsubscribeTasks = null;
 
     const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
       if (!currentUser) {
-        navigate('/');
+        setUser(null);
+        setTasks([]);
+        setLoading(false);
         return;
       }
 
@@ -58,7 +60,7 @@ export default function DashboardPage() {
         },
         (err) => {
           console.error('Firestore error:', err);
-          setError(err.message);
+          setError('Не удалось загрузить задачи.');
           setLoading(false);
         }
       );
@@ -68,7 +70,7 @@ export default function DashboardPage() {
       unsubscribeAuth();
       if (unsubscribeTasks) unsubscribeTasks();
     };
-  }, [navigate]);
+  }, []);
 
   const handleAddTask = async (title) => {
     if (!user) return;
@@ -109,19 +111,58 @@ export default function DashboardPage() {
     }
   };
 
+  const filteredTasks = useMemo(() => {
+    if (filter === 'active') {
+      return tasks.filter((task) => !task.completed);
+    }
+
+    if (filter === 'completed') {
+      return tasks.filter((task) => task.completed);
+    }
+
+    return tasks;
+  }, [tasks, filter]);
+
+  const totalTasks = tasks.length;
+  const activeTasks = tasks.filter((task) => !task.completed).length;
+  const completedTasks = tasks.filter((task) => task.completed).length;
+
   return (
     <div className="page">
       <Header />
       <main className="container">
-        <h1>Мои задачи</h1>
+        <h1 className="page-title">Мои задачи</h1>
+
+        <p className="page-subtitle">
+          Управляй своими задачами, отслеживай прогресс и держи всё под контролем.
+        </p>
+
+        <div className="stats-grid">
+          <div className="stat-card">
+            <span className="stat-label">Всего</span>
+            <strong className="stat-value">{totalTasks}</strong>
+          </div>
+
+          <div className="stat-card">
+            <span className="stat-label">Активные</span>
+            <strong className="stat-value">{activeTasks}</strong>
+          </div>
+
+          <div className="stat-card">
+            <span className="stat-label">Завершенные</span>
+            <strong className="stat-value">{completedTasks}</strong>
+          </div>
+        </div>
+
         <TaskForm onAddTask={handleAddTask} />
+        <FilterBar currentFilter={filter} onChangeFilter={setFilter} />
 
         {loading && <p>Загрузка...</p>}
         {error && <p>{error}</p>}
 
         {!loading && !error && (
           <TaskList
-            tasks={tasks}
+            tasks={filteredTasks}
             onToggleTask={handleToggleTask}
             onDeleteTask={handleDeleteTask}
           />

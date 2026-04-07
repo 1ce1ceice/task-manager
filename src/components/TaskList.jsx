@@ -18,3 +18,12 @@ export default function TaskList({ tasks, onToggleTask, onDeleteTask }) {
     </div>
   );
 }
+
+if (!tasks.length) {
+  return (
+    <div className="empty-state card">
+      <h3>Пока нет задач</h3>
+      <p>Добавь первую задачу, чтобы начать работу.</p>
+    </div>
+  );
+}
