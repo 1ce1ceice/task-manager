@@ -55,6 +55,11 @@ npm run dev
 Приложение будет доступно по адресу:
 http://localhost:5173
 
+## :closed_lock_with_key: Test Account
+
+- **Логин:** 123@mail.ru
+- **Пароль:** 123123
+
 ## 🌍 Deployment
 
 Live demo: https://task-manager-698f9.web.app
