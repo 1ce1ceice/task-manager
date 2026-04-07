@@ -1,16 +1,60 @@
-# React + Vite
+# TaskManager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TaskManager — это веб-приложение для управления личными задачами. Пользователь может зарегистрироваться, войти в систему, создавать задачи, отмечать их как выполненные, удалять их и фильтровать список по статусу. За основу взят **Create Todoist clone with React and Firebase** из пет-проектов OpenSource.
 
-Currently, two official plugins are available:
+## ## :question: Функции
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- регистрация нового пользователя
+- вход и выход из аккаунта
+- защищенный доступ к dashboard
+- создание задач
+- отметка задачи как выполненной
+- удаление задач
+- фильтрация задач: все / активные / завершенные
+- хранение данных в Firebase Firestore
 
-## React Compiler
+## Архитектура
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React + Vite  
+- **Routing:** React Router  
+- **Backend (BaaS):** Firebase  
+- **Authentication:** Firebase Auth  
+- **Database:** Firestore  
+- **UI:** CSS + SVG icons  
+- **Deployment:** Vercel
 
-## Expanding the ESLint configuration
+## :exclamation: Установка
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Клонировать репозиторий
+
+```bash
+git clone git@github.com:1ce1ceice/task-manager.git
+cd task-manager 
+```
+
+2. Установить зависимости
+```bash
+npm install
+```
+
+3. Настроить Firebase
+
+Создайте проект в Firebase Console и включите:
+- Authentication → Email/Password
+- Firestore Database
+
+Создайте файл:
+src/lib/firebase.js
+
+И вставьте туда конфигурацию Firebase.
+
+## Запуск
+```bash
+npm run dev
+```
+Приложение будет доступно по адресу:
+http://localhost:5173
+
+
+
+    
