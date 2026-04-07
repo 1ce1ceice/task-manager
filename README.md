@@ -1,5 +1,4 @@
 [![Maintainability](https://qlty.sh/gh/1ce1ceice/projects/task-manager/maintainability.svg)](https://qlty.sh/gh/1ce1ceice/projects/task-manager)
-[![Code Coverage](https://qlty.sh/gh/1ce1ceice/projects/task-manager/coverage.svg)](https://qlty.sh/gh/1ce1ceice/projects/task-manager)
 
 # TaskManager
 
