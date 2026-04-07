@@ -1,8 +1,8 @@
+[![Maintainability](https://qlty.sh/gh/1ce1ceice/projects/task-manager/maintainability.svg)](https://qlty.sh/gh/1ce1ceice/projects/task-manager)
+
 # TaskManager
 
 TaskManager — это веб-приложение для управления личными задачами. Пользователь может зарегистрироваться, войти в систему, создавать задачи, отмечать их как выполненные, удалять их и фильтровать список по статусу. За основу взят **Create Todoist clone with React and Firebase** из пет-проектов OpenSource.
-
-[![Maintainability](https://qlty.sh/gh/1ce1ceice/projects/task-manager/maintainability.svg)](https://qlty.sh/gh/1ce1ceice/projects/task-manager)
 
 ## :question: Функции
 
