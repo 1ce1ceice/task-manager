@@ -1,15 +1,19 @@
 import TaskItem from './TaskItem';
 
-const demoTasks = [
-  { id: 1, title: 'Сделать регистрацию', completed: false },
-  { id: 2, title: 'Сделать список задач', completed: true },
-];
+export default function TaskList({ tasks, onToggleTask, onDeleteTask }) {
+  if (!tasks.length) {
+    return <p className="empty-state">Задач пока нет.</p>;
+  }
 
-export default function TaskList() {
   return (
     <div className="task-list">
-      {demoTasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+      {tasks.map((task) => (
+        <TaskItem
+          key={task.id}
+          task={task}
+          onToggleTask={onToggleTask}
+          onDeleteTask={onDeleteTask}
+        />
       ))}
     </div>
   );

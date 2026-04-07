@@ -116,3 +116,8 @@ button[type='submit'] {
   text-decoration: line-through;
   opacity: 0.6;
 }
+
+.empty-state {
+  margin-top: 16px;
+  color: #6b7280;
+}
