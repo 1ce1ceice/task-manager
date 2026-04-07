@@ -21,7 +21,7 @@ TaskManager — это веб-приложение для управления �
 - **Authentication:** Firebase Auth  
 - **Database:** Firestore  
 - **UI:** CSS
-- **Deployment:** Vercel
+- **Deployment:** Firebase
 
 ## :exclamation: Установка
 
@@ -54,6 +54,10 @@ npm run dev
 ```
 Приложение будет доступно по адресу:
 http://localhost:5173
+
+## 🌍 Deployment
+
+Live demo: https://task-manager-698f9.web.app
 
 
 
