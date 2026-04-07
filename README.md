@@ -20,7 +20,7 @@ TaskManager — это веб-приложение для управления �
 - **Backend (BaaS):** Firebase  
 - **Authentication:** Firebase Auth  
 - **Database:** Firestore  
-- **UI:** CSS + SVG icons  
+- **UI:** CSS
 - **Deployment:** Vercel
 
 ## :exclamation: Установка
