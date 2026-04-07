@@ -64,6 +64,7 @@ http://localhost:5173
 
 Live demo: https://task-manager-698f9.web.app
 
+## Demo
 
-
+![Demo](demo1.gif)
     
